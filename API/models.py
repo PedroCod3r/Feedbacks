@@ -8,6 +8,7 @@ class Plataforma(models.Model):
 class Ouvidoria(models.Model):
     nome = models.CharField(max_length=50)
     inativo = models.BooleanField(default=False)
+    
 
 class Feedback(models.Model):
     tipo_de_plataforma = models.ForeignKey(Plataforma, on_delete=models.CASCADE) 
