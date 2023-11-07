@@ -12,10 +12,6 @@ class Ouvidoria(models.Model):
 
 class Feedback(models.Model):
     tipo_de_plataforma = models.ForeignKey(Plataforma, related_name='feedbacks_plataforma', on_delete=models.CASCADE, null=True)
-    tipo_de_ouvidoria = models.ForeignKey(Ouvidoria, on_delete=models.CASCADE)
+    tipo_de_ouvidoria = models.ForeignKey(Ouvidoria, related_name='feedbacks_ouvidoria', on_delete=models.CASCADE)
     mensagem_digitada_na_ouvidoria = models.CharField(max_length=255)
     data_criacao_ouvidoria = models.DateTimeField(auto_now_add=True)
-    # nome_da_plataforma = models.CharField(max_length=50, blank=True, null=True)
-
-    # def salvar_dados_plataforma(self):
-    #     return self.tipo_de_plataforma.nome
