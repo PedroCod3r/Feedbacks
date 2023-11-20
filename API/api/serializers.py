@@ -26,13 +26,15 @@ class FeedbackbyPlataformaSerializer(serializers.ModelSerializer):
     tipo_de_ouvidoria = OuvidoriaSerializer(read_only=True)
     tipo_de_feedback = FeedbackSerializer(read_only=True)
     class Meta:
-        model = models.Plataforma
+        model = models.Feedback
+        fields = ['id', 'tipo_de_ouvidoria' ]
         # fields = ['id', 'nome', 'inativo', 'tipo_de_feedback']
-        fields = '__all__'
+        # fields = '__all__'
 class FeedbackgetSerializer(serializers.ModelSerializer):
     # Retorna dentro do JSON o nome e o status do tipo de plataforma e tipo de ouvidoria
     tipo_de_plataforma = PlataformaSerializer(read_only=True)
     tipo_de_ouvidoria = OuvidoriaSerializer(read_only=True)
     class Meta:
         model = models.Feedback
-        fields = ['id','tipo_de_plataforma', 'tipo_de_ouvidoria', 'mensagem_digitada_na_ouvidoria' ,'data_criacao_ouvidoria']
+        # fields = ['id','tipo_de_plataforma', 'tipo_de_ouvidoria', 'mensagem_digitada_na_ouvidoria' ,'data_criacao_ouvidoria']
+        fields = '__all__'

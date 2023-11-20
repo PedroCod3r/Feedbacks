@@ -27,11 +27,6 @@ class FeedbackByPlataformaViewSet(viewsets.ReadOnlyModelViewSet):
     # queryset = models.Feedback.objects.filter(tipo_de_plataforma = PlataformaViewSet) 
     # filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id'] # Filtragem pelo id
-
-    # serializer_class = serializers.FeedbackbyPlataformaSerializer
-    # queryset = models.Feedback.objects.all()
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['id']
 # Metodo Get para feedback  
 class FeedbackGetViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.FeedbackgetSerializer
