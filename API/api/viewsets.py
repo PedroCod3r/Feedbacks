@@ -43,7 +43,7 @@ def listOuvidoria(request):
         serializer = OuvidoriaSerializer(instance=ouvidoria, many= True)
         return Response(serializer.data)
 
-@api_view(http_method_names=['GET'])
+# @api_view(http_method_names=['GET'])
 # def feedByPlataform(request):
     #   if request.method == "GET":
     # plataforma = Plataforma.objects.filter(id = id)
