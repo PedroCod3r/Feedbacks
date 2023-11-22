@@ -1,40 +1,21 @@
 from rest_framework import serializers # Importando o rest
-from API import models # Importanto o models
+from API.models import Feedback, Ouvidoria, Plataforma  # Importanto o models
 
 class PlataformaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Plataforma
-        fields = '__all__'
+        model = Plataforma
+        fields = ['nome']
+
 class OuvidoriaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Ouvidoria
-        fields = '__all__'
+        model = Ouvidoria
+        fields = ['nome']
 
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Feedback
-        fields = '__all__'
+        model = Feedback
+        fields = ['id','plataforma', 'ouvidoria', 'mensagem_digitada_na_ouvidoria', 'data_criacao_ouvidoria']
 
-class FeedbackbyPlataformaSerializer(serializers.ModelSerializer):
-    # Retornar os feedbacks por plataforma
-    # tipo_de_feedback = FeedbackSerializer(read_only=True)
-    # feedbacks_plataforma = serializers.SlugRelatedField(
-    #     many=True,
-    #     read_only=True,
-    #     slug_field='mensagem_digitada_na_ouvidoria'
-    # )
-    tipo_de_ouvidoria = OuvidoriaSerializer(read_only=True)
-    tipo_de_feedback = FeedbackSerializer(read_only=True)
-    class Meta:
-        model = models.Feedback
-        fields = ['id', 'tipo_de_ouvidoria' ]
-        # fields = ['id', 'nome', 'inativo', 'tipo_de_feedback']
-        # fields = '__all__'
-class FeedbackgetSerializer(serializers.ModelSerializer):
-    # Retorna dentro do JSON o nome e o status do tipo de plataforma e tipo de ouvidoria
-    tipo_de_plataforma = PlataformaSerializer(read_only=True)
-    tipo_de_ouvidoria = OuvidoriaSerializer(read_only=True)
-    class Meta:
-        model = models.Feedback
-        # fields = ['id','tipo_de_plataforma', 'tipo_de_ouvidoria', 'mensagem_digitada_na_ouvidoria' ,'data_criacao_ouvidoria']
-        fields = '__all__'
+    plataforma = PlataformaSerializer(source = 'tipo_de_plataforma', read_only= True)
+    ouvidoria = OuvidoriaSerializer(source = 'tipo_de_ouvidoria', read_only= True)
+

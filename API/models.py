@@ -6,9 +6,15 @@ class Plataforma(models.Model):
     nome = models.CharField(max_length=50)
     inativo = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.nome
+
 class Ouvidoria(models.Model):
     nome = models.CharField(max_length=50)
     inativo = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.nome
 
 class Feedback(models.Model):
     tipo_de_plataforma = models.ForeignKey(Plataforma, related_name='feedbacks_plataforma', on_delete=models.CASCADE, null=True)
