@@ -46,16 +46,13 @@ def listOuvidoria(request):
 @api_view(http_method_names=['GET'])
 def feedByPlataform(request, plataforma_id):
     #   if request.method == "GET":
-        filter = Feedback.objects.filter(tipo_de_plataforma__pk= plataforma_id )
-        serializer = FeedbackSerializer(instance=filter, many =True)
+        filter_plataforma = Feedback.objects.filter(tipo_de_plataforma__pk= plataforma_id )
+        serializer = FeedbackSerializer(instance=filter_plataforma, many =True)
         return Response(serializer.data)
 
-# @api_view(http_method_names=['GET'])
-# def feedByOuvidoria(request, ouvidoria_id):
-      
-        # return Response(serializer.data)
-    # plataforma = Plataforma.objects.filter(id = id)
-    # feed = Feedback.objects.all()
-    # serializer = FeedbackSerializer(instance=feed, many=True)
-    # return Response(serializer.data)
+@api_view(http_method_names=['GET'])
+def feedByOuvidoria(request, ouvidoria_id):
+    filter_ouvidoria = Feedback.objects.filter(tipo_de_ouvidoria__pk = ouvidoria_id)
+    serializer = FeedbackSerializer(instance=filter_ouvidoria, many=True)
+    return Response(serializer.data)
     
