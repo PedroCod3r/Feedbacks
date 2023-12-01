@@ -1,7 +1,7 @@
 # Iniciando as importações
 from django.contrib import admin
 from django.urls import path
-from API.api.viewsets import createFeedback, listPlataforms, feedByOuvidoria, feedByPlataform, listOuvidoria
+from API.api.views import createFeedback, listPlataforms, feedByOuvidoria, feedByPlataform, listOuvidoria
 
 # Registrando rotas
 urlpatterns = [
