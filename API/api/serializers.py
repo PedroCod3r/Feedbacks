@@ -4,12 +4,12 @@ from .models import Feedback, Ouvidoria, Plataforma  # Importanto o models
 class PlataformaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plataforma
-        fields = ['nome']
+        fields = ['id','nome']
 
 class OuvidoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ouvidoria
-        fields = ['nome']
+        fields = ['id','nome']
 
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
